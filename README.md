@@ -1,4 +1,14 @@
-sicp-mailonline github repo
-===========================
+# sicp-mailonline
 
-Mailonline SICP study group repo. More info at https://groups.google.com/forum/#!forum/sicp-mailonline. Please send an email to the group or myself for write access to this repository or just fork and send pull-requests.
+A Clojure library designed to ... well, that part is up to you.
+
+## Usage
+
+FIXME
+
+## License
+
+Copyright © 2014 FIXME
+
+Distributed under the Eclipse Public License either version 1.0 or (at
+your option) any later version.
