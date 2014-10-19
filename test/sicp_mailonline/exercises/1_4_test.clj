@@ -5,6 +5,9 @@
 ;; (define (a-plus-abs-b a b)
 ;;   ((if (> b 0) + -) a b))
 
+(ns sicp-mailonline.exercises.1-4-test
+  (:require [clojure.test :refer :all]))
+
 (defn- a-plus-abs-b [a b]
   ((if (> b 0) + -) a b))
 
