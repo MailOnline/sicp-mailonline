@@ -40,7 +40,7 @@
 
 ;; "evaluate the arguments and then apply".
 ;; The interpreter first evaluates the operator and the operands, and then applies the resulting procedure to the resulting arguments.
-;; As an attempt is made to evaluate the argument (p), the interpreter enters an infinte recursion.
+;; As an attempt is made to evaluate the argument (p), the interpreter enters an infinite recursion.
 ;; As Clojure does not automatically perform tail-call optimization (in contrast to Scheme), this will result in a StackOverflowError.
 
 ;; Note that the use of recur can emulate Scheme's tail-call optimization here, if p is defined as follows:
