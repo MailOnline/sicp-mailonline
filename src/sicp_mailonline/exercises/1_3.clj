@@ -22,6 +22,6 @@
 ;; a solution using more idiomatic Clojure
 ;; uses the seq abstraction and core library routines such as sort
 (defn sum-squares-of-two-largest-b [x y z]
-  (let [largest-two (take 2 (sort > (vector x y z)))]
-    (sum-squares (first largest-two) 
-                 (last largest-two))))
+  (let [sum-squares (fn [sum n] (+ sum (square n)))
+        two-largest (take 2 (sort > (vector x y z)))]
+    (reduce sum-squares 0 two-largest)))
