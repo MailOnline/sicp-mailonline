@@ -39,17 +39,18 @@
 ;; ============================================
 ;; exercise adopts a stabilising delta approach
 ;; ============================================
-(defn- stabilising-delta-good-enough? [guess change x]
-  (let [delta (/ change guess)]
-    (< (Math/abs delta) 0.00001)))
+(defn- stabilising-delta-good-enough? [previous-guess guess]
+  (< (Math/abs (- guess previous-guess))
+     (Math/abs (* previous-guess 0.00001))))
 
-(defn- stabilising-delta-sqrt-iter [guess change x]
-  (if (stabilising-delta-good-enough? guess change x)
+(defn- stabilising-delta-sqrt-iter [previous-guess guess x]
+  (if (stabilising-delta-good-enough? previous-guess guess)
     guess
-    (let [improved-guess (improve guess x)]
-      (stabilising-delta-sqrt-iter improved-guess 
-                                   (- improved-guess guess) 
-                                   x))))
+    (stabilising-delta-sqrt-iter guess 
+                                 (improve guess x) 
+                                 x)))
 
 (defn stabilising-delta-sqrt [x]
-  (stabilising-delta-sqrt-iter 1.0 1.0 x))
+  (if (zero? x)
+    0
+    (stabilising-delta-sqrt-iter 0 1.0 x)))

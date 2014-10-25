@@ -27,7 +27,10 @@
         (is (not (close-to? (Math/sqrt 0.001)            ;; 0.0316...
                             (sqrt 0.001)))))             ;; 0.0412...
       (testing "square root of a very large number"
-        (is (thrown? StackOverflowError (sqrt 9223372036854775807))))))
+        (is (thrown? StackOverflowError (sqrt 9223372036854775807))))
+      (testing "square root of zero"
+        (is (not (close-to? 0 
+                            (sqrt 0)))))))
 
   (testing "stabilising proportional change approach of exercise"
     (let [sqrt stabilising-delta-sqrt]
@@ -36,7 +39,10 @@
                        (sqrt 0.001))))
       (testing "square root of a very large number"
         (is (close-to? (Math/sqrt 9223372036854775807)   ;; 3.037E9...
-                       (sqrt 9223372036854775807)))))))
+                       (sqrt 9223372036854775807))))
+      (testing "square root of zero"
+        (is (close-to? 0 
+                       (sqrt 0)))))))
 
 ;; ==================================================================
 ;; For very small numbers, a fixed tolerance of 0.001 can represent a
