@@ -22,6 +22,6 @@
    ])
 
 (defn expression-output
-  "Returns the output from running the specified output as a string"
+  "Returns the output from running the specified expression as a string"
   [index]
   (str (eval (read-string (expressions index)))))
