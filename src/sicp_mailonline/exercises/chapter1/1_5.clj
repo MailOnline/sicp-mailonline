@@ -31,7 +31,7 @@
 ;; Answer:
 ;; With normal-order evaluation, the arguments in the call to test would not be evaluated until
 ;; their values were needed. Instead, the full operand expressions (rather than their evaluated
-;; values) would be subsituted for the formal parameters in test. The (p) procedure would replace
+;; values) would be subsituted for the formal parameters in test. The (p) expression would replace
 ;; the y formal parameter in test.
 ;;         => If x were equal to 0, then y would never be evaluated and
 ;;            hence the procedure would return 0 correctly.

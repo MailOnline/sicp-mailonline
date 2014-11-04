@@ -3,13 +3,13 @@
   (:require [sicp-mailonline.paragraphs.chapter1.1-1-6 :refer :all]
             [clojure.test :refer :all]))
 
-(deftest test-abs-1
+(deftest test-abs
   (testing "absolute value of 7 is 7"
-    (is (= (abs-1 7) 7)))
+    (is (= (abs 7) 7)))
   (testing "absolute value of 0 is 0"
-    (is (= (abs-1 0) 0)))
+    (is (= (abs 0) 0)))
   (testing "absolute value of -7 is 7"
-    (is (= (abs-1 -7) 7))))
+    (is (= (abs -7) 7))))
 
 (deftest test-abs-2
   (testing "absolute value of 7 is 7"

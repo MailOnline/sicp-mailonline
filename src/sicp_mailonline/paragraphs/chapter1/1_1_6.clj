@@ -1,7 +1,7 @@
 (ns sicp-mailonline.paragraphs.chapter1.1-1-6
     (:refer-clojure :exclude [<= >=]))
 
-(defn abs-1 [x]
+(defn abs [x]
   (cond
    (> x 0) x
    (= x 0) 0
