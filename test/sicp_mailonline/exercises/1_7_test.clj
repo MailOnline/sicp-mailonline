@@ -7,13 +7,13 @@
   (testing "the good-enough? method fails on small numbers"
     (is (not (= (. Math sqrt 0.001) (sqrt 0.001))))))
 
-; Causes a stack overflow
-;(deftest good-enough-big-numbers
-;  (testing "the good-enough? method fails on big numbers"
-;    (let [big-num (. Math pow 10 13)]
-;      (is (not (= (. Math sqrt big-num) (sqrt big-num)))))))
+(deftest good-enough-big-numbers
+  (testing "the good-enough? method fails on big numbers"
+    (let [big-num (+ (. Math pow 10 12) (. Math PI))]
+      (is (zero? (. Float compare (. Math sqrt big-num) (sqrt big-num)))))))
 
 (deftest test-better-sqrt
   (testing "the better square root method has improved accuracy"
-    (is (= (. Math sqrt 0.001) (better-sqrt 0.001)))))
+    (is (= (. Math sqrt 0.001) (better-sqrt 0.001)))
+    (is (= 13.0 (better-sqrt 169)))))
 
