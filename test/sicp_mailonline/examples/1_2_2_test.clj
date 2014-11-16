@@ -29,4 +29,8 @@
            5 5
            6 8
            7 13
-           8 21))))
+           8 21)))
+
+  (testing "counting change"
+    (is (= 292
+           (count-change 100)))))
