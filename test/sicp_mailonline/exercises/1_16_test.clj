@@ -12,7 +12,7 @@
           2 2 4
           2 3 8)))
 
-;;  n  steps (invocations of iter)
+;;  n  steps (invocations of expt-iter)
 ;;  2    3
 ;;  4    4
 ;;  8    5
