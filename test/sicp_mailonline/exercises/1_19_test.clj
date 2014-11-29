@@ -4,7 +4,7 @@
   (:require [sicp-mailonline.exercises.1-19 :refer :all]
             [clojure.test :refer :all]))
 
-(deftest exercise1.19
+(deftest exercise1-19
   (testing "fast Fibonacci"
     (are [n x] (= x (fib n))
           0  0
