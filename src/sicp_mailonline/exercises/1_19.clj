@@ -35,6 +35,8 @@
 ;;           p' = pp + qq
 ;;           q' = qp + qq + pq = 2pq + qq
 
+(ns sicp-mailonline.exercises.1-19)
+
 (defn- fib-iter [a b p q count]
   (cond
    (zero? count) b
