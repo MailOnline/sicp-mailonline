@@ -18,3 +18,18 @@
 
 (defn prime? [n]
   (= n (smallest-divisor n)))
+
+(defn- expmod [base exp m]
+  (cond (zero? exp) 1
+        (even? exp) (rem (square (expmod base (/ exp 2) m)) m)
+        :else (rem (* base (expmod base (dec exp) m)) m)))
+
+(defn- fermat-test [n]
+  (letfn [(try-it [a]
+            (= (expmod a n n) a))]
+    (try-it (inc (rand-int (dec n))))))
+
+(defn fast-prime? [n times]
+  (cond (zero? times) true
+        (fermat-test n) (recur n (dec times))
+        :else false))
