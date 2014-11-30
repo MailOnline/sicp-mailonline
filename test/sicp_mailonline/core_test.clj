@@ -47,6 +47,23 @@
 
 ; Exercise 1.9 - First Recursive (keeps it's head, I think), Second Iterative.
 
+; Fib
+(defn fib [n]
+  (cond (= n 0) 0
+        (= n 1) 1
+        :else (+ (fib (- n 1))
+                (fib (- n 2)))))
+
+(defn fib2 [n]
+  (fib-iter 1 0 n))
+
+(defn fib-iter [a b count]
+  (if (= count 0)
+      b
+      (fib-iter (+ a b) a (- count 1))))
+(fib 6)
+(fib2 6)
+
 ; Exercise 1.10
 (defn A [x y]
   (cond (= y 0) 0
@@ -104,7 +121,18 @@
                (* 2 (oneeleven (- n 2)))
                (* 3 (oneeleven (- n 3)))))
   )
-(oneeleven-recursive 40)
+
+(defn oneleven-iter [n]
+  (cond (< n 3) n
+        :else (+
+               (oneeleven-iter-worker 0 (- n 1))
+               (* 2 (oneeleven (- n 2)))
+               (* 3 (oneeleven (- n 3)))))
+  )
+
+(defn oneeleven-iter-worker [acc target a]
+  
+  )
 
 (defn cube-iter [guess x]
   (if (cube-good-enough? guess x)
