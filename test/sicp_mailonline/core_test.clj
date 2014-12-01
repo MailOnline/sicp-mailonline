@@ -142,6 +142,29 @@
 
 (trampoline oneleven-iter 5)
 
+;;    1
+;;   1 1
+;;  1 2 1
+;; 1 3 3 1
+
+(defn pascals-triangle-add-row [row-above]
+  (let [
+        pairs (partition 2 1 row-above)
+        wrap-ones #(concat [1])
+        ]
+    (concat [1] (map #(apply + %) pairs) [1])))
+
+(defn pascals-triange [height]
+  (loop [acc [[1]]]
+    (if (= (count acc) height)
+      (reverse acc)
+      (recur (cons (pascals-triangle-add-row (first acc)) acc))
+    )))
+
+(pascals-triange 10)
+
+
+(count [1 2 3])
 
 (defn cube-iter [guess x]
   (if (cube-good-enough? guess x)
