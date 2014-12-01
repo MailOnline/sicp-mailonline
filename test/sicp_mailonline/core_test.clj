@@ -117,22 +117,31 @@
 (defn oneeleven-recursive [n]
   (cond (< n 3) n
         :else (+
-               (oneeleven (- n 1))
-               (* 2 (oneeleven (- n 2)))
-               (* 3 (oneeleven (- n 3)))))
+               (oneeleven-recursive (- n 1))
+               (* 2 (oneeleven-recursive (- n 2)))
+               (* 3 (oneeleven-recursive (- n 3)))))
+  )
+
+(oneeleven-recursive 5)
+
+(defn oneeleven-iter-worker [acc n]
+  (cond (< n 3) n
+        :else (+
+               (oneeleven-iter-worker acc (- n 1))
+               (* 2 (oneeleven-iter-worker acc (- n 2)))
+               (* 3 (oneeleven-iter-worker acc (- n 3)))))
   )
 
 (defn oneleven-iter [n]
   (cond (< n 3) n
         :else (+
                (oneeleven-iter-worker 0 (- n 1))
-               (* 2 (oneeleven (- n 2)))
-               (* 3 (oneeleven (- n 3)))))
+               (* 2 (oneeleven-iter-worker 0 (- n 2)))
+               (* 3 (oneeleven-iter-worker 0 (- n 3)))))
   )
 
-(defn oneeleven-iter-worker [acc target a]
-  
-  )
+(trampoline oneleven-iter 5)
+
 
 (defn cube-iter [guess x]
   (if (cube-good-enough? guess x)
