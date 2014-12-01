@@ -154,6 +154,10 @@
         ]
     (concat [1] (map #(apply + %) pairs) [1])))
 
+;; As iterate
+(take 5 (iterate pascals-triangle-add-row [1]))
+
+;; As Loop / Recur
 (defn pascals-triange [height]
   (loop [acc [[1]]]
     (if (= (count acc) height)
