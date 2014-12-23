@@ -15,7 +15,7 @@
 ;; What happens if we (perversely) ask the interpreter to evaluate the
 ;; combination (f f)?  Explain.
 
-(ns sicp-mailonline.exercises.1_34_test
+(ns sicp-mailonline.exercises.1-34-test
   (:require [clojure.test :refer :all]))
 
 (defn- square [x]
