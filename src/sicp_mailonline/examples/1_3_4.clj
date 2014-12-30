@@ -1,6 +1,10 @@
 (ns sicp-mailonline.examples.1-3-4
   (:require [sicp-mailonline.examples.1-3-3 :refer [fixed-point]]))
 
+(defn average-damp [f]
+  (letfn [(average [a b] (/ (+ a b) 2))]
+    (fn [x] (average x (f x)))))
+
 (def ^:private ^:const dx 0.00001)
 
 ;; Dg(x) = (g(x + dx) - g(x)) / dx
