@@ -1,14 +1,18 @@
 # sicp-mailonline
 
-A Clojure library designed to ... well, that part is up to you.
+Yet another SICP follow along.
 
 ## Usage
 
-FIXME
+```
+lein generate exercise 1-1 sicp-mailonline midje
+lein generate paragraph 1-1 sicp-mailonline midje
+```
+
+will generate a ready to play test/src combo for an exercise or paragraph.
 
 ## License
 
-Copyright © 2014 FIXME
+Copyright © 2015 Renzo Borgatti <http://reborg.net>
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.

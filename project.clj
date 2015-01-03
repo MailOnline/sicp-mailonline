@@ -4,6 +4,8 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.6.0"]]
+  :plugins [[lein-gen "0.2.1"]]
+  :generators [[sicp-generators "0.1.0"]]
   :repl-options {:init (do
                          (require 'midje.repl)
                          (midje.repl/autotest :filter (complement :slow)))}
