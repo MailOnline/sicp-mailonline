@@ -19,7 +19,7 @@
 (defn prime? [n]
   (= n (smallest-divisor n)))
 
-(defn- expmod [base exp m]
+(defn expmod [base exp m]
   (cond (zero? exp) 1
         (even? exp) (rem (square (expmod base (/ exp 2) m)) m)
         :else (rem (* base (expmod base (dec exp) m)) m)))
