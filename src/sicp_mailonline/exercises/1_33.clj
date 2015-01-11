@@ -14,7 +14,7 @@
 ;;     GCD(i,n) = 1).
 
 (ns sicp-mailonline.exercises.1-33
-  (:require [sicp-mailonline.examples.1-2-6 :refer [fast-prime?]]))
+  (:require [sicp-mailonline.examples.1-2-6 :refer [prime?] :rename {prime? example-prime?}]))
 
 (defn filtered-accumulate [combiner null-value term next filter? a b]
   (cond (> a b) null-value
@@ -24,7 +24,8 @@
 
 (defn sum-squares-primes [a b]
   (letfn [(square [x] (* x x))
-          (prime? [x] (fast-prime? x 5))]
+          (prime? [x] (and (> x 1)                ;; example 1.2.6 prime? falsely returns true for 1
+                           (example-prime? x)))]
     (filtered-accumulate + 0 square inc prime? a b)))
 
 (defn product-relatively-primes [n]
