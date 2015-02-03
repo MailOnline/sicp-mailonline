@@ -17,3 +17,22 @@
 
 (defn sqrt [x]
   (newtons-method (fn [y] (- (square y) x)) 1.0))
+
+(defn fixed-point-of-transform [g transform guess]
+  "going generic with all this stuff"
+  (p/fixed-point (transform g) guess))
+
+(defn average [f]
+  (fn [x] (/ (+ x (f x)) 2)))
+
+(defn sqrt-first [x]
+  (fixed-point-of-transform
+    (fn [y] (/ x y))
+    average
+    1.0))
+
+(defn sqrt-second [x]
+  (fixed-point-of-transform
+    (fn [y] (- (square y) x))
+    newton-transform
+    1.0))
