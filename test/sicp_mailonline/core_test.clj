@@ -167,14 +167,47 @@
 
 (pascals-triange 10)
 
+(defn count-change [amount]
+  (count-change-cc amount 5))
 
-(count [1 2 3])
+
+
+(defn count-change-cc [amount kinds-of-coins]
+  (cond (= amount 0) 1
+        (or (< amount 0) (= kinds-of-coins 0)) 0
+        :else (+ (count-change-cc amount
+                                  (- kinds-of-coins 1))
+                 (count-change-cc (- amount
+                                     (count-change-first-denomination kinds-of-coins))
+                                  kinds-of-coins))))
+
+(defn count-change-first-denomination [kinds-of-coins]
+  (cond (= kinds-of-coins 1) 1
+        (= kinds-of-coins 2) 5
+        (= kinds-of-coins 3) 10
+        (= kinds-of-coins 4) 25
+        (= kinds-of-coins 5) 50))
+
+(count-change 10)
+
 
 (defn cube-iter [guess x]
   (if (cube-good-enough? guess x)
     (double guess)
     (cube-iter (cube-improve guess x)
                x)))
+
+
+(defn worker [term a next-val b]
+  (if (> a b)
+    0
+    (+ (term a)
+       (worker term (next-val a) next-val b))))
+
+(defn adder [a b]
+  (worker #(+ % 0) a #(inc %) b))
+
+(adder 2 4)
 
 
 (fact
