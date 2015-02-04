@@ -68,16 +68,62 @@
   (fib-iter 1 0 0 1 n))
 
 
+;
+; Example using matrices
+;
+; Fib(n) can be calculated by using this
+; transformation 
+;
+; (a)   (1  1)^n (a)
+; ( ) ← (    )   ( )
+; (b)   (1  0)   (b) 
+;
+;
+; Taking a matrix approach, you would normally use 
+; a math library that defines matrix operations. 
+; For simplicity, I have defined the basic matrix
+; operations for 2 x 2 matrices
+
+(defn dot [x y]
+  (+  (* (get x 0) (get y 0))
+      (* (get x 1) (get y 1))))
+
+(defn mat-mult [x y]
+  ; Matrixes are represented as vectors of 4 elements
+  ; [0 1 2 3] laid out
+  ;  (0 1)
+  ;  (2 3) 
+  [
+    (dot [(get x 0) (get x 1)] [(get y 0) (get y 2)])
+    (dot [(get x 0) (get x 1)] [(get y 1) (get y 3)])
+    (dot [(get x 2) (get x 3)] [(get y 0) (get y 2)])
+    (dot [(get x 2) (get x 3)] [(get y 1) (get y 3)])
+  ])
+
+(defn mat-apply [matrix vec]
+  [
+    (dot [(get matrix 0) (get matrix 1)] vec)
+    (dot [(get matrix 2) (get matrix 3)] vec)
+  ])
+
+(defn square [a]
+  (mat-mult a a))
+
+(defn mat-power [matrix n]
+  (defn iter [inner-matrix acc count]
+    (cond   (= count 0) 
+              acc
+            (even? count)
+              (iter (square inner-matrix) acc (/ count 2))
+            :else  
+              (iter inner-matrix (mat-mult inner-matrix acc) (- count 1))))
+
+  (iter matrix [1 0 0 1] n))
 
 
-
-
-
-
-
-
-
-
+; This is the new fibonaccci function
+(defn fibn-mat [n]
+    (get (mat-apply (mat-power [1 1 1 0] n) [1 0]) 1))
 
 
 
