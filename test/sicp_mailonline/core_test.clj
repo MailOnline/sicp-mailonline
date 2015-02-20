@@ -54,14 +54,15 @@
         :else (+ (fib (- n 1))
                 (fib (- n 2)))))
 
-(defn fib2 [n]
-  (fib-iter 1 0 n))
-
 (defn fib-iter [a b count]
   (if (= count 0)
       b
       (fib-iter (+ a b) a (- count 1))))
 (fib 6)
+
+(defn fib2 [n]
+  (fib-iter 1 0 n))
+
 (fib2 6)
 
 ; Exercise 1.10
@@ -70,43 +71,43 @@
         (= x 0) (* 2 y)
         (= y 1) 2
         :else (A (- x 1) (A x (- y 1)))))
-(A 1 10)
-(A 0 (A 1 9))
-(A 0 (A 0 (A 1 8)))
-(A 0 (A 0 (A 0 (A 1 7))))
-(A 0 (A 0 (A 0 (A 0 (A 1 6)))))
-(A 0 (A 0 (A 0 (A 0 (A 0 (A 1 5))))))
-(A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 1 4)))))))
-(A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 1 4)))))))
-(A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 1 3))))))))
-(A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 1 2)))))))))
-(A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 2)))))))))
-(A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 4))))))))
-(A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 8)))))))
-(A 0 (A 0 (A 0 (A 0 (A 0 (A 0 16))))))
-(A 0 (A 0 (A 0 (A 0 (A 0 32)))))
-(A 0 (A 0 (A 0 (A 0 64))))
-(A 0 (A 0 (A 0 128)))
-(A 0 (A 0 256))
-(A 0 512)
-(A 0 16)
-;;;;
-(A 2 4)
-(A 1 (A 2 3))
-(A 1 (A 1 (A 2 2)))
-(A 1 (A 1 (A 1 (A 2 1))))
-(A 1 (A 1 (A 1 2)))
-(A 1 (A 1 (A 0 (A 1 1))))
-(A 1 (A 1 (A 0 2)))
-(A 1 (A 1 4))
-(A 1 (A 0 (A 1 3)))
-(A 1 (A 0 (A 0 (A 1 2))))
-(A 1 (A 0 (A 0 (A 0 (A 1 1)))))
-(A 1 (A 0 (A 0 (A 0 2))))
-(A 1 (A 0 (A 0 4)))
-(A 1 (A 0 8))
-(A 1 16)
-(A 1 16) => 16^2
+;;; (A 1 10)
+;;; (A 0 (A 1 9))
+;;; (A 0 (A 0 (A 1 8)))
+;;; (A 0 (A 0 (A 0 (A 1 7))))
+;;; (A 0 (A 0 (A 0 (A 0 (A 1 6)))))
+;;; (A 0 (A 0 (A 0 (A 0 (A 0 (A 1 5))))))
+;;; (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 1 4)))))))
+;;; (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 1 4)))))))
+;;; (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 1 3))))))))
+;;; (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 1 2)))))))))
+;;; (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 2)))))))))
+;;; (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 4))))))))
+;;; (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 8)))))))
+;;; (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 16))))))
+;;; (A 0 (A 0 (A 0 (A 0 (A 0 32)))))
+;;; (A 0 (A 0 (A 0 (A 0 64))))
+;;; (A 0 (A 0 (A 0 128)))
+;;; (A 0 (A 0 256))
+;;; (A 0 512)
+;;; (A 0 16)
+;;; ;;;;
+;;; (A 2 4)
+;;; (A 1 (A 2 3))
+;;; (A 1 (A 1 (A 2 2)))
+;;; (A 1 (A 1 (A 1 (A 2 1))))
+;;; (A 1 (A 1 (A 1 2)))
+;;; (A 1 (A 1 (A 0 (A 1 1))))
+;;; (A 1 (A 1 (A 0 2)))
+;;; (A 1 (A 1 4))
+;;; (A 1 (A 0 (A 1 3)))
+;;; (A 1 (A 0 (A 0 (A 1 2))))
+;;; (A 1 (A 0 (A 0 (A 0 (A 1 1)))))
+;;; (A 1 (A 0 (A 0 (A 0 2))))
+;;; (A 1 (A 0 (A 0 4)))
+;;; (A 1 (A 0 8))
+;;; (A 1 16)
+;;; (A 1 16) => 16^2
 
 (defn oneten-f [n] (A 0 n))
 (= (oneten-f 12) (* 2 12))
@@ -167,9 +168,13 @@
 
 (pascals-triange 10)
 
-(defn count-change [amount]
-  (count-change-cc amount 5))
 
+(defn count-change-first-denomination [kinds-of-coins]
+  (cond (= kinds-of-coins 1) 1
+        (= kinds-of-coins 2) 5
+        (= kinds-of-coins 3) 10
+        (= kinds-of-coins 4) 25
+        (= kinds-of-coins 5) 50))
 
 
 (defn count-change-cc [amount kinds-of-coins]
@@ -181,12 +186,8 @@
                                      (count-change-first-denomination kinds-of-coins))
                                   kinds-of-coins))))
 
-(defn count-change-first-denomination [kinds-of-coins]
-  (cond (= kinds-of-coins 1) 1
-        (= kinds-of-coins 2) 5
-        (= kinds-of-coins 3) 10
-        (= kinds-of-coins 4) 25
-        (= kinds-of-coins 5) 50))
+(defn count-change [amount]
+  (count-change-cc amount 5))
 
 (count-change 10)
 
@@ -208,6 +209,28 @@
   (worker #(+ % 0) a #(inc %) b))
 
 (adder 2 4)
+
+
+(defn make-rat [n d] [n d])
+(defn numer [rat] (first rat))
+(defn denom [rat] (second rat))
+(defn val-rat [rat] (/ (numer rat) (denom rat)))
+(defn add-rat [rat-a rat-b]
+  (let [new-n (+ (* (numer rat-a) (denom rat-b)) (* (numer rat-b) (denom rat-a)))
+        new-d (* (denom rat-a) (denom rat-b))
+        ]
+    (make-rat new-n new-d)
+  ))
+(defn disp-rat [rat] (str (numer rat) " / " (denom rat)))
+; (defn gcd-rat [rat-a rat-b] )
+
+(fact (= 4 (numer (make-rat 4 8))))
+(fact (= 8 (denom (make-rat 4 8))))
+(fact (= (val-rat (make-rat 3 4))
+         (val-rat (add-rat (make-rat 1 4) (make-rat 4 8)))))
+(fact (= (val-rat (make-rat 2 4)) (val-rat (make-rat 1 2))))
+(fact (not (= (val-rat (make-rat 1 2)) (val-rat (make-rat 1 3)))))
+(fact (= "1 / 2" (disp-rat (make-rat 1 2))))
 
 
 (fact
