@@ -240,6 +240,29 @@
 (fact (make-rat 2 2) => [2 2])
 (fact (make-rat -2 -2) => [2 2])
 
+; Exercise 2.2
+
+(defn make-point [x y] [x y])
+(def x-point first)
+(def y-point second)
+(def start-segment first)
+(def end-segment second)
+(defn point-str [[x y]] (str "(" x "," y ")"))
+(defn make-segment [point-a point-b] [point-a point-b])
+(defn midpoint-segment [segment]
+  [(/ (+ (-> segment start-segment x-point)
+            (-> segment end-segment x-point)) 2)
+   (/ (+ (-> segment start-segment y-point)
+           (-> segment end-segment y-point)) 2)])
+
+
+(fact (x-point (make-point 2 3)) => 2)
+(fact (y-point (make-point 2 3)) => 3)
+(fact (point-str (make-point 2 3)) => "(2,3)")
+(fact (start-segment (make-segment (make-point 2 3) (make-point 4 5))) => [2 3])
+(fact (end-segment (make-segment (make-point 2 3) (make-point 4 5))) => [4 5])
+(fact (midpoint-segment (make-segment (make-point 2 3) (make-point 4 5))) => [3 4])
+
 
 
 
