@@ -263,6 +263,29 @@
 (fact (end-segment (make-segment (make-point 2 3) (make-point 4 5))) => [4 5])
 (fact (midpoint-segment (make-segment (make-point 2 3) (make-point 4 5))) => [3 4])
 
+; Exercise 2.3
+(def make-rectangle make-segment)
+(defn min-max-x-y [m fn rectange]
+  (if (m (fn (first rectange)) (fn (second rectange)))
+    (fn (first rectange))
+    (fn (second rectange))))
+
+(def min-x (partial min-max-x-y < x-point))
+(def min-y (partial min-max-x-y < y-point))
+(def max-x (partial min-max-x-y > x-point))
+(def max-y (partial min-max-x-y > y-point))
+
+(min-x (make-rectangle (make-point 2 3) (make-point 4 5)))
+(min-y (make-rectangle (make-point 2 3) (make-point 4 5)))
+(max-x (make-rectangle (make-point 2 3) (make-point 4 5)))
+(max-y (make-rectangle (make-point 2 3) (make-point 4 5)))
+
+(defn rectange-perimeter [rectangle]
+  (+ (* 2 (- (max-x rectangle) (min-x rectangle)))
+     (* 2 (- (max-x rectangle) (min-x rectangle)))))
+
+(fact (rectange-perimeter (make-rectangle (make-point 2 3) (make-point 4 5))) => 8)
+
 
 
 
