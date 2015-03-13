@@ -211,7 +211,10 @@
 (adder 2 4)
 
 
-(defn make-rat [n d] [n d])
+(defn make-rat [n d]
+  (if (= (< 0 n) (< 0 d))
+    [(abs n) (abs d)]
+    [(- 0 (abs n)) (abs n)]))
 (defn numer [rat] (first rat))
 (defn denom [rat] (second rat))
 (defn val-rat [rat] (/ (numer rat) (denom rat)))
@@ -224,14 +227,19 @@
 (defn disp-rat [rat] (str (numer rat) " / " (denom rat)))
 ; (defn gcd-rat [rat-a rat-b] )
 
-(fact (= 4 (numer (make-rat 4 8))))
-(fact (= 8 (denom (make-rat 4 8))))
+(fact (numer (make-rat 4 8)) => 4)
+(fact (= 8 (denom (make-rat 4 8))) => true)
 (fact (= (val-rat (make-rat 3 4))
-         (val-rat (add-rat (make-rat 1 4) (make-rat 4 8)))))
-(fact (= (val-rat (make-rat 2 4)) (val-rat (make-rat 1 2))))
-(fact (not (= (val-rat (make-rat 1 2)) (val-rat (make-rat 1 3)))))
-(fact (= "1 / 2" (disp-rat (make-rat 1 2))))
+         (val-rat (add-rat (make-rat 1 4) (make-rat 4 8)))) => true)
+(fact (= (val-rat (make-rat 2 4)) (val-rat (make-rat 1 2))) => true)
+(fact (not (= (val-rat (make-rat 1 2)) (val-rat (make-rat 1 3)))) => true)
+(fact (= "1 / 2" (disp-rat (make-rat 1 2))) => true)
 
 
-(fact
-  (= 1 1) => true)
+; Exercise 2.1
+(fact (make-rat 2 2) => [2 2])
+(fact (make-rat -2 -2) => [2 2])
+
+
+
+
