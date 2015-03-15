@@ -15,7 +15,6 @@
 ;;     (cons (accumulate op init <??>)
 ;;           (accumulate-n op init <??>))))
 
-;; TODO idiomatic Clojure solution
 (ns sicp-mailonline.exercises.2-36
   (:require [sicp-mailonline.examples.2-2-3 :refer [accumulate]]))
 
