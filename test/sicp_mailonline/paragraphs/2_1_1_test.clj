@@ -12,6 +12,6 @@
        (fact "rational numbers in problem domain"
              (print-rat (add-rat (base-make-rat 1 2) (base-make-rat 1 3))) => "5/6"
              (print-rat (mul-rat (base-make-rat 1 2) (base-make-rat 1 3))) => "1/6"
-             (print-rat  (add-rat (base-make-rat 1 3) (base-make-rat 1 3))) => "6/9")
+             (print-rat  (add-rat (base-make-rat 1 3) (base-make-rat 1 3))) => "2/3")
        (fact "better make rat"
-             (print-rat (make-rat 3 9)) => "2/3"))
+             (print-rat (make-rat 3 9)) => "1/3"))
