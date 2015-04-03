@@ -1,7 +1,7 @@
 ;; Example 2.2.4 - A Picture Language
 
 (ns sicp-mailonline.examples.2-2-4
-  (:require [sicp-mailonline.exercises.2-46 :refer [add-vect scale-vect xcor-vect ycor-vect]]
+  (:require [sicp-mailonline.exercises.2-46 :refer [make-vect add-vect scale-vect xcor-vect ycor-vect]]
             [sicp-mailonline.exercises.2-47 :refer [origin-frame edg1-frame edge2-frame]]
             [sicp-mailonline.exercises.2-48 :refer [start-segment end-segment]]
             [sicp-mailonline.exercises.2-23 :refer [for-each-a]
@@ -56,3 +56,48 @@
                  ((frame-coord-map frame) (start-segment segment))
                  ((frame-coord-map frame) (end-segment segment))))
               segment-list)))
+
+(defn transform-painter [painter origin corner1 corner2]
+  (fn [frame]
+    (let [m (frame-coord-map frame)
+          new-origin (m origin)]
+      (painter (make-frame new-origin
+                           (sub-vect (m corner1) new-origin)
+                           (sub-vect (m corner2) new-origin))))))
+
+(defn flip-vert [painter]
+  (transform-painter painter
+                     (make-vect 0.0 1.0)    ;; new origin
+                     (make-vect 1.0 1.0)    ;; new end of edge1
+                     (make-vect 0.0 0.0)))  ;; new end of edge2
+
+(defn shrink-to-upper-right [painter]
+  (transform-painter painter
+                     (make-vect 0.5 0.5)
+                     (make-vect 1.0 0.5)
+                     (make-vect 0.5 1.0)))
+
+(defn rotate90 [painter]
+  (transform-painter painter
+                     (make-vect 1.0 0.0)
+                     (make-vect 1.0 1.0)
+                     (make-vect 0.0 0.0)))
+(defn squash-inwards [painter]
+  (transform-painter painter
+                     (make-vect 0.0 0.0)
+                     (make-vect 0.65 0.35)
+                     (make-vect 0.35 0.65)))
+
+(defn beside [painter1 painter2]
+  (let [split-point (make-vect 0.5 0.0)
+        paint-left (transform-painter painter1
+                                      (make-vect 0.0 0.0)
+                                      split-point
+                                      (make-vect 0.0 1.0))
+        paint-right (transform-painter painter2
+                                       (split-point)
+                                       (make-vect 1.0 0.0)
+                                       (make-vect 0.5 1.0))]
+    (fn [frame]
+      (paint-left frame)
+      (paint-right frame))))
