@@ -10,7 +10,7 @@
 ;; For each constructor supply the appropriate selectors to produce an
 ;; implementation for frames.
 
-(ns sicp-mailonlline.exercises.2-47)
+(ns sicp-mailonline.exercises.2-47)
 
 (defn make-frame [origin edge1 edge2]
   (list origin edge1 edge2))

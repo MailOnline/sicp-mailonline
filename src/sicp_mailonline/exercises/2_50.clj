@@ -4,7 +4,8 @@
 ;; degrees.
 
 (ns sicp-mailonline.exercises.2-50
-  (:require [sicp-mailonline.examples.2-4-4]))
+  (:require [sicp-mailonline.examples.2-2-4 :refer [transform-painter]]
+            [sicp-mailonline.exercises.2-46 :refer [make-vect]]))
 
 (defn flip-horiz [painter]
   (transform-painter painter
@@ -22,4 +23,4 @@
   (transform-painter painter
                      (make-vect 0.0 1.0)
                      (make-vect 0.0 0.0)
-                     (make-vect 1.0 1.0))
+                     (make-vect 1.0 1.0)))

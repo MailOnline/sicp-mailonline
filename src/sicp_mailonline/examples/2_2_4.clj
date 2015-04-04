@@ -1,8 +1,9 @@
 ;; Example 2.2.4 - A Picture Language
 
 (ns sicp-mailonline.examples.2-2-4
-  (:require [sicp-mailonline.exercises.2-46 :refer [make-vect add-vect scale-vect xcor-vect ycor-vect]]
-            [sicp-mailonline.exercises.2-47 :refer [origin-frame edg1-frame edge2-frame]]
+  (:require
+            [sicp-mailonline.exercises.2-46 :refer [make-vect add-vect sub-vect scale-vect xcor-vect ycor-vect]]
+            [sicp-mailonline.exercises.2-47 :refer [make-frame origin-frame edge1-frame edge2-frame]]
             [sicp-mailonline.exercises.2-48 :refer [start-segment end-segment]]
             [sicp-mailonline.exercises.2-23 :refer [for-each-a]
                                             :rename {for-each-a for-each}]))
@@ -11,8 +12,8 @@
 (declare below)
 (declare flip-vert)
 (declare flip-horiz)
-(declare up-split)
 (declare draw-line)
+(declare up-split)
 
 (defn flipped-pairs [painter]
   (let [painter2 (beside painter (flip-vert painter))]
