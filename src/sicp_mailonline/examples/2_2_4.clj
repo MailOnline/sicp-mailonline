@@ -41,6 +41,14 @@
         half (beside (flip-horiz quarter) quarter)]
     (below (flip-vert half) half)))
 
+(defn square-of-four [tl tr bl br]
+  (fn [painter]
+    (let [top (beside (tl painter)
+                      (tr painter))
+          bottom (beside (bl painter)
+                         (br painter))]
+      (below bottom top))))
+
 (defn frame-coord-map [frame]
   (fn [v]
     (add-vect
