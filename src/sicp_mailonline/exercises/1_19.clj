@@ -11,7 +11,6 @@
 ; to jump directly of two transformations at once
 
 (defn fib-iter [a b p q n]
-  (println (format "a %s b %s p %s q %s n %s" a b p q n))
   (cond (zero? n)
         b
         (even? n)

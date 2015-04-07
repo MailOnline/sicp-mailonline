@@ -18,7 +18,6 @@
     (final-mul a b n
                (+ y-0 y-1
                   (loop [cnt (dec n) sum 0]
-                    (println sum)
                     (if (= 1 cnt)
                       sum
                       (recur (dec cnt) (+ sum (simpson-sum f a b cnt)))))))))

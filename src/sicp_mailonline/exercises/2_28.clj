@@ -4,7 +4,7 @@
   (cond
     (not (seq? t)) (mapf t)
     (empty? t) t
-    :else (reducef (fringe (first t)) (fringe (rest t)))))
+    :else (reducef (mapreduce (first t) mapf reducef) (mapreduce (rest t) mapf reducef))))
 
 (defn fringe [t]
   (mapreduce t list concat))
