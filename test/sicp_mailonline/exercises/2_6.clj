@@ -24,4 +24,5 @@
   (testing "1 + 2 = 3"
     (is (= (((add one two) square) 2) ((three square) 2)))))
 
-(run-all-tests)
+(run-tests)
+
