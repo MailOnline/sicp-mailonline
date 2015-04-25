@@ -1,7 +1,7 @@
 ;; Example 2.3.3
 
-(ns sicp-mailonline.examples.2-3-3-test
-  (:require [sicp-mailonline.examples.2-3-3 :refer :all]
+(ns sicp-mailonline.examples.2-3-3-test.unordered
+  (:require [sicp-mailonline.examples.2-3-3.unordered :refer :all]
             [clojure.test :refer :all]))
 
 (deftest sets-as-unordered-lists

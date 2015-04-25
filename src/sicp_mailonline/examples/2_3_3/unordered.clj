@@ -1,7 +1,7 @@
 ;; Example 2.3.3 Representing Sets
 ;; Sets as unordered lists
 
-(ns sicp-mailonline.examples.2-3-3)
+(ns sicp-mailonline.examples.2-3-3.unordered)
 
 (defn element-of-set? [x set]
   (cond (empty? set) false

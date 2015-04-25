@@ -3,7 +3,7 @@
 ;; sets.
 
 (ns sicp-mailonline.exercises.2-59
-  (:require [sicp-mailonline.examples.2-3-3 :refer [element-of-set?]]))
+  (:require [sicp-mailonline.examples.2-3-3.unordered :refer [element-of-set?]]))
 
 (defn union-set [set1 set2]
   (cond (empty? set1) set2
