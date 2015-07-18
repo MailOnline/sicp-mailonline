@@ -15,7 +15,7 @@
 ;;              integer
 
 (ns sicp-mailonline.exercises.2-83
-  (:require [sicp-mailonline.examples.2-1-1 :refer [make-rat]]))
+  (:require [sicp-mailonline.examples.2-1-1 :refer [make-rat numer denom]]))
 
 (defn- attach-tag [type-tag contents]
   (list type-tag contents))
@@ -83,7 +83,9 @@
     (put 'make '(rational)
          (fn [n d] (tag (make-rat n d))))
     (put 'raise '(rational)
-         (fn [x] (make-real x)))))
+         ;; force floating point with double to avoid built-in rational type
+         (fn [x] (make-real (/ (double (numer x))
+                               (denom x)))))))
 
 ;; integer numbers
 (defn make-integer [x]
