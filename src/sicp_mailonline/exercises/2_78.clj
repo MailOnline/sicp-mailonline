@@ -26,6 +26,6 @@
 
 (defn contents [datum]
   (cond (number? datum) datum
-        (coll? datum) (rest datum)
+        (coll? datum) (second datum)
         :else (throw (IllegalArgumentException.
                       (format "Bad tagged datum -- CONTENTS %s" datum)))))
