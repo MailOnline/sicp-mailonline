@@ -104,7 +104,8 @@
   (install-complex-package)
   (install-real-package)
   (install-rational-package)
-  (install-integer-package))
+  (install-integer-package)
+  @op-table)
 
 ;; generic operation
 (defn- apply-generic [op & args]
