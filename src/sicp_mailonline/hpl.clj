@@ -8,9 +8,9 @@
 
 (import 
  '(java.awt Color Graphics Dimension)
- '(java.awt.image BufferedImage)
- '(java.io.File)
- '(javax.imageio.*)
+ ;'(java.awt.image BufferedImage)
+ ;'(java.io.File)
+ ;'(javax.imageio.*)
  '(javax.swing JPanel JFrame))
 
 
@@ -185,12 +185,80 @@
       (make-vect 1.0 1.0)
       (make-vect 0.0 0.0)))
 
-(defn rotate-90 [painter] ; rotates 90 anti-clockwise
+(defn flip-horiz [painter]
+  (transform-painter
+    painter
+    (make-vect 1.0 0.0)
+    (make-vect 0.0 0.0)
+    (make-vect 1.0 1.0)))
+
+(defn rotate90 [painter] ; rotates 90 anti-clockwise
   (transform-painter
     painter
      (make-vect 1.0 0.0)
      (make-vect 1.0 1.0)
      (make-vect 0.0 0.0)))
+
+(defn rotate180 [painter]
+  (rotate90 (rotate90 painter)))
+
+
+(defn right-split [painter n]
+  (if (= n 0)
+    painter
+    (let [smaller (right-split painter (- n 1))]
+      (beside painter (below smaller smaller)))))
+
+(defn up-split [painter n]
+  (if (= n 0)
+    painter
+    (let [smaller (up-split painter (- n 1))]
+      (below painter (beside smaller smaller)))))
+
+(defn corner-split [painter n]
+  (if (= n 0)
+    painter
+    (let [  up            (up-split painter (- n 1))
+            right         (right-split painter (- n 1))
+            top-left      (beside up up)
+            bottom-right  (below right right)
+            corner        (corner-split painter (- n 1))]
+      (beside
+        (below painter top-left)
+        (below bottom-right corner)))))
+
+
+(defn square-limit [painter n]
+  (let [  quarter (corner-split painter n)
+          half    (beside (flip-horiz quarter) quarter)
+        ]
+    (below (flip-vert half) half)))
+
+
+(defn square-of-four [tl tr bl br]
+  (fn [painter]
+    (let [
+          top     (beside (tl painter) (tr painter))
+          bottom  (beside (bl painter) (br painter))]
+      (below bottom top))))
+
+(defn flipped-pairs [painter]
+  (let [painter2 (beside painter (flip-vert painter))]
+    (below painter2 painter2)))
+
+
+(defn shrink-to-upper-right [painter]
+  (transform-painter painter
+                     (make-vect 0.5 0.5)
+                     (make-vect 1.0 0.5)
+                     (make-vect 0.5 1.0)))
+
+(defn squash-inwards [painter]
+  (transform-painter painter
+                     (make-vect 0.0 0.0)
+                     (make-vect 0.63 0.35)
+                     (make-vect 0.35 0.65)))
+
 
 (defn make-image-painter [file]
   (let
@@ -236,10 +304,25 @@
                                   (ycor-vect (origin-frame frame)))]
         (.drawImage graphics img affine-transform nil)))))
 
+(defn outline-painter [graphics frame]
+  (let [s-p (segments-painter (list
+                                (make-segment (make-vect 0 0) (make-vect 0 1))
+                                (make-segment (make-vect 0 1) (make-vect 1 1))
+                                (make-segment (make-vect 1 1) (make-vect 1 0))
+                                (make-segment (make-vect 1 0) (make-vect 0 0))))]
+    (s-p graphics frame)))
+
+;
+; The rogers painters
+;
+
 (def rogers
   (make-image-painter
     (io/file (io/resource roger-barton-filename))))
 
+;
+; The wave painters
+;
 
 (def wave (segments-painter
             (list
@@ -258,24 +341,7 @@
 
 (def wave4 (below wave2 wave2))
 
-(defn outline-painter [graphics frame]
-  (let [s-p (segments-painter (list
-                                (make-segment (make-vect 0 0) (make-vect 0 1))
-                                (make-segment (make-vect 0 1) (make-vect 1 1))
-                                (make-segment (make-vect 1 1) (make-vect 1 0))
-                                (make-segment (make-vect 1 0) (make-vect 0 0))))]
-    (s-p graphics frame)))
 
 
 
-;
-; Move to markdown
-; 
 
-;(show-picture (beside rogers (flip-vert rogers)) 400 400)
-
-;(show-picture (rotate-90 rogers)  400 400)
-
-;(show-picture rogers 400 400)
-
-(show-picture wave4 400 400)

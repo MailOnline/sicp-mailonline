@@ -1,7 +1,7 @@
 ; 
 ; Exercise 2.1
 ;
-(ns sicp-mailonline.core)
+(ns sicp-mailonline.exercises.2-1)
 
 (defn gcd [a b]
   (if (= b 0)

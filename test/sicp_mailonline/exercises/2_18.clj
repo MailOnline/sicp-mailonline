@@ -3,7 +3,7 @@
 ;
 (ns sicp-mailonline.core-test
   (:require [clojure.test :refer :all]
-            [sicp-mailonline.core :refer :all]))
+            [sicp-mailonline.exercises.2-18 :refer :all]))
 
 
 (deftest test-new-reverse

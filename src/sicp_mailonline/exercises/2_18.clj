@@ -1,7 +1,7 @@
 ; 
 ; Exercise 2.18
 ;
-(ns sicp-mailonline.core)
+(ns sicp-mailonline.exercises.2-18)
 
 (defn new-reverse [a]
   (defn iter [b acc]

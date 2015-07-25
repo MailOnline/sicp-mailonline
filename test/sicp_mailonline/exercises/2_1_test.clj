@@ -1,4 +1,4 @@
-(ns sicp-mailonline.core-test
+(ns sicp-mailonline.exercises.2-1-test 
   (:require [clojure.test :refer :all]
             [sicp-mailonline.core :refer :all]))
 
