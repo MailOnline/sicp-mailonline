@@ -4,7 +4,7 @@
 (ns sicp-mailonline.exercises.3-6-test   
 	(:require   [clojure.test :refer :all]
 	            [sicp-mailonline.exercises.3-6 :refer :all]
-				[sicp-mailonline.paragraphs.3-1-2 :refer :all]))
+							[sicp-mailonline.rand :refer :all]))
 
 (deftest new-rand-2-test
 	(testing "generate and reset"

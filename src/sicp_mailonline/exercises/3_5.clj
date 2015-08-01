@@ -2,7 +2,7 @@
 ; Exercise 3.5
 ;
 (ns sicp-mailonline.exercises.3-5
-	(:require [sicp-mailonline.paragraphs.3-1-2 :refer :all]))	; montecarlo
+	(:require [sicp-mailonline.monte-carlo :refer :all]))
 
 (defn random-in-range [low high]
 	(let [rand-range (- high low)]

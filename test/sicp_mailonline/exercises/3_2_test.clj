@@ -7,13 +7,13 @@
 
 (deftest make-monitored-test
   (testing "Counting number of times called"
-    (let [s (make-monitored sqrt)]
+    (let [s (make-monitored #(Math/sqrt %))]
        (is (= (s 100) 10.0))
         (is (= (s 4) 2.0))
         (is (= (s :how-many-calls?) 2))))
 
   (testing "Reset counter works"
-   (let [s (make-monitored sqrt)]
+   (let [s (make-monitored #(Math/sqrt %))]
       (is (= (s 100) 10.0))
       (is (= (s 4) 2.0))
       (s :reset-count) 

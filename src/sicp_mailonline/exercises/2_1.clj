@@ -1,12 +1,9 @@
 ; 
 ; Exercise 2.1
 ;
-(ns sicp-mailonline.exercises.2-1)
-
-(defn gcd [a b]
-  (if (= b 0)
-    a
-    (gcd b (rem a b))))
+(ns sicp-mailonline.exercises.2-1
+  (:require [sicp-mailonline.paragraphs.2-1-1 :refer [numer denom]]
+            [sicp-mailonline.gcd :refer :all]))
  
 (defn abs [x]
   (if (< x 0)
@@ -18,19 +15,13 @@
     (cons x (cons y nil)))
 
   (let  [g (gcd n d)  
-          numer (abs (/ n g))
-          denom (abs (/ d g))]
+         numer (abs (/ n g))
+         denom (abs (/ d g))]
           
     (cond 
       (and (>= n 0) (>= d 0)) (pair numer denom)
       (and (< n 0) (< d 0))   (pair numer denom)
       :else                   (pair (- 0 numer) denom))))
 
-(defn numer [x]
-  (first x))
 
-(defn denom [x]
-  (first (rest x)))
 
-(defn print-rat [x]
-  (println (numer x) "/" (denom x)))

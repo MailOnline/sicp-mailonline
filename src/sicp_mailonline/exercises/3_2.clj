@@ -3,9 +3,6 @@
 ;
 (ns sicp-mailonline.exercises.3-2)
 
-(defn sqrt [x]
-  (Math/sqrt x))
-
 (defn make-monitored [f] 
   (let [num-times (atom 0)]
     (fn [x]
@@ -16,7 +13,7 @@
             (swap! num-times #(inc %))
             (f x))))))
 
-(def s (make-monitored sqrt))
+(def s (make-monitored #(Math/sqrt %)))
 
 (println (s 100))
 
