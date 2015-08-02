@@ -1,7 +1,7 @@
 ;; 3.1.1 Local State Variables
 
-(ns sicp-mailonline.examples.3_1_1_test
-  (:require [sicp-mailonline.examples.3_1_1 :refer :all]
+(ns sicp-mailonline.examples.3-1-1-test
+  (:require [sicp-mailonline.examples.3-1-1 :refer :all]
             [clojure.test :refer :all]))
 
 (deftest example3-1-1

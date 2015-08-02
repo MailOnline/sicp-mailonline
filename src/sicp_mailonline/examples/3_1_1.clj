@@ -1,6 +1,6 @@
 ;; 3.1.1 Local State Variables
 
-(ns sicp-mailonline.examples.3_1_1)
+(ns sicp-mailonline.examples.3-1-1)
 
 (defn- valid-balance? [balance]
   (or ((complement neg?) balance)
