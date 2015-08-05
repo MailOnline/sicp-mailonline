@@ -10,7 +10,7 @@
           :how-many-calls? @num-times
           :reset-count (reset! num-times 0)
           (do 
-            (swap! num-times #(inc %))
+            (swap! num-times inc)
             (f x))))))
 
 (def s (make-monitored #(Math/sqrt %)))
