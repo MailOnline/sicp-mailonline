@@ -19,11 +19,11 @@
   (testing "circle of radius 3 centred at (5,7)"
     (let [p (make-area-predicate 5 7 3)]
       (is (approx? 28.3
-                   (estimate-integral p 2 8 4 10 100000)
+                   (estimate-integral p 2 8 4 10 200000)
                    0.1))))
 
   (testing "estimating pi by measuring the area of a unit circle"
     (let [p (make-area-predicate 1 1 1)]
       (is (approx? 3.14159
-                   (estimate-integral p 0 2 0 2 100000)
+                   (estimate-integral p 0 2 0 2 200000)
                    0.01)))))
