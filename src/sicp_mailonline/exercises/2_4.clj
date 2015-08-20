@@ -2,7 +2,7 @@
 ; Exercise 2.4
 ;
 
-(ns sicp-mailonline.core)
+(ns sicp-mailonline.exercises.2-4)
 
 (defn mcons [x y] 
   (fn [m] (m x y)))

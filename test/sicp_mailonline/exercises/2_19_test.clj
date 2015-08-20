@@ -2,9 +2,9 @@
 ; Exercise 2.19
 ;
 
-(ns sicp-mailonline.core-test
+(ns sicp-mailonline.exercises.2-19-test
   (:require [clojure.test :refer :all]
-            [sicp-mailonline.core :refer :all]))
+            [sicp-mailonline.exercises.2-19 :refer :all]))
 
 (deftest test-first-denomination
   (testing "First us coin is a half-dollar"

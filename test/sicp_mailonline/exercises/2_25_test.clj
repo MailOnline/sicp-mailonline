@@ -2,9 +2,9 @@
 ; Exercise 2.25
 ;
 
-(ns sicp-mailonline.core-test
+(ns sicp-mailonline.exercises.2-25-test
   (:require [clojure.test :refer :all]
-            [sicp-mailonline.core :refer :all]))
+            [sicp-mailonline.exercises.2-25 :refer :all]))
 
 (deftest list-access-test
   (testing "part 1"

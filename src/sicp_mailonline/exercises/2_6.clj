@@ -1,7 +1,7 @@
 ; 
 ; Exercise 2.6
 ;
-(ns sicp-mailonline.core)
+(ns sicp-mailonline.exercises.2-6)
 
 (defn zero [f]
   (fn [x] x))

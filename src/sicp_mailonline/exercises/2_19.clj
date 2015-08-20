@@ -1,7 +1,7 @@
 ; 
 ; Exercise 2.19
 ;
-(ns sicp-mailonline.core)
+(ns sicp-mailonline.exercises.2-19)
 
 (defn first-denomination [coin-values]
   (first coin-values))

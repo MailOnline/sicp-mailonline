@@ -1,10 +1,9 @@
 ; 
 ; Exercise 2.21
 ;
-(ns sicp-mailonline.core)
+(ns sicp-mailonline.exercises.2-21)
 
-(defn square [x]
-  (* x x))
+(def square #(* % %))
 
 (defn square-list [items]
   (if (empty? items)

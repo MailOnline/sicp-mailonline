@@ -5,10 +5,9 @@
 
 (defn new-reverse [a]
   (defn iter [b acc]
-    (if 
-      (= b ())
+    (if (empty? b)
       acc
       (recur 
         (rest b) 
         (cons (first b) acc))))
-  (iter a ()))
+  (iter a nil))

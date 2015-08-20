@@ -6,31 +6,41 @@
 ; proceeds in the reverse order from tail to head. This is also linear O(n). 
 ; Therefore the algorithm is O(n) but reverses the order of the list. This can 
 ; be fixed by reversing the list as the last stage which is also O(n) keeping
-; the alogorithm O(n) overall.
+; the algorithm O(n) overall.
+
+; The problem with reversing the cons is in Clojure cons nil 3 - does not work at all
+; 
 
 
-(ns sicp-mailonline.core)
+(ns sicp-mailonline.exercises.2-22)
 
-(defn square [x]
-  (* x x))
+(defn square [x] (* x x))
 
 (defn square-list [items]
-  (defn iter [things answer]
+  (letfn [(iter [things answer]
     (if (empty? things) 
       answer
-      (iter 
+      (recur 
         (rest things)
         (cons 
-          answer
-          (square (first things))))))
+          (square (first things))
+          answer))))]
+  (iter items nil)))
 
-  (iter items nil))
-
-
-; The problem is that if the first argument to cons is a list then a cons cell
-; is created containing a list. This creates a structure of nested lists.
 ;
-; e.g. for (1 2 3) =>  ((1 4) 9) and not (1 4 9)
-; 
+; Fixed version
+;
+
+(defn square-list [items]
+  (letfn [(iter [things answer]
+    (if (empty? things) 
+      answer
+      (recur 
+        (rest things)
+        (cons 
+          (square (first things))
+          answer))))]
+    (reverse (iter items nil))))
+
 
 

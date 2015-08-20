@@ -1,9 +1,9 @@
 ; 
 ; Exercise 2.6
 ;
-(ns sicp-mailonline.core-test
+(ns sicp-mailonline.exercises.2-6.test
   (:require [clojure.test :refer :all]
-            [sicp-mailonline.core :refer :all]))
+            [sicp-mailonline.exercises.2-6 :refer :all]))
 
 (defn square [a]
   (* a a))

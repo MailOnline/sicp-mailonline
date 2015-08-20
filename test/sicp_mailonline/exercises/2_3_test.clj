@@ -1,6 +1,6 @@
-(ns sicp-mailonline.core-test
+(ns sicp-mailonline.exercises.2-3.test
   (:require [clojure.test :refer :all]
-            [sicp-mailonline.core :refer :all]))
+            [sicp-mailonline.exercises.2-3 :refer :all]))
 
 (deftest make-point-test
   (testing "make-point"
@@ -64,4 +64,4 @@
       (mr2 (make-point 2 3) 5 7))
     35)))
 
-(run-all-tests)
+(run-tests)

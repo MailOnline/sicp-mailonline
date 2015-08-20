@@ -1,6 +1,6 @@
-(ns sicp-mailonline.core-test
+(ns sicp-mailonline.exercises.2-7-2-16.test
   (:require [clojure.test :refer :all]
-            [sicp-mailonline.core :refer :all]))
+            [sicp-mailonline.exercises.2-7-2-16 :refer :all]))
 ; 
 ; Exercise 2.7 - 2.16
 ;

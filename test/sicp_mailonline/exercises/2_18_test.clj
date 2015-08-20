@@ -1,14 +1,14 @@
 ; 
 ; Exercise 2.18
 ;
-(ns sicp-mailonline.core-test
+(ns sicp-mailonline.exercises.2-18-test
   (:require [clojure.test :refer :all]
             [sicp-mailonline.exercises.2-18 :refer :all]))
-
+          
 
 (deftest test-new-reverse
   (testing "testing empty list"
-    (is (= (new-reverse ()) ())))
+    (is (empty? (new-reverse nil))))
   
   (testing "testing one element"
     (is (= (new-reverse (list 1)) '(1))))

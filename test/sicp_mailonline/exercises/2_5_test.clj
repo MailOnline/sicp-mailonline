@@ -1,9 +1,9 @@
 ; 
 ; Exercise 2.5
 ;
-(ns sicp-mailonline.core-test
+(ns sicp-mailonline.exercises.2-5.test
   (:require [clojure.test :refer :all]
-            [sicp-mailonline.core :refer :all]))
+            [sicp-mailonline.exercises.2-5 :refer :all]))
 
 (deftest mpcon-test
     (testing "mpcon"
@@ -14,4 +14,4 @@
     (testing "mpcar"
       (is (= (mpcar (mpcon 3 2)) 3))))
 
-(run-all-tests)
+(run-tests)

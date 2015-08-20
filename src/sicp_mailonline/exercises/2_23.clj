@@ -1,6 +1,6 @@
 ; Exercise 2.23
 
-(ns sicp-mailonline.core)
+(ns sicp-mailonline.exercises.2-23)
 
 (defn for-each [func data]
   (defn iter [d]  

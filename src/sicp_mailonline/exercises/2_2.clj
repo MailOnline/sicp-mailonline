@@ -1,7 +1,7 @@
 ; 
 ; Exercise 2.2
 ;
-(ns sicp-mailonline.core)
+(ns sicp-mailonline.exercises.2-2)
 
 (defn make-point [x y]
   (list x y))

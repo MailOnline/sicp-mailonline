@@ -1,7 +1,7 @@
 ; 
 ; Exercise 2.5
 ;
-(ns sicp-mailonline.core)
+(ns sicp-mailonline.exercises.2-5)
 
 
 ; a ^ b - integer

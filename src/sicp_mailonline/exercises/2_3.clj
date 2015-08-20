@@ -14,7 +14,7 @@
 ; of rectangles  
 ;
 ;
-(ns sicp-mailonline.core)
+(ns sicp-mailonline.exercises.2-3)
 
 ; Point abstraction
 (defn make-point [x y]

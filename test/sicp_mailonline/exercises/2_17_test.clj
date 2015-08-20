@@ -1,9 +1,9 @@
 ; 
 ; Exercise 2.17
 ;
-(ns sicp-mailonline.core-test
+(ns sicp-mailonline.exercises.2-17-test
   (:require [clojure.test :refer :all]
-            [sicp-mailonline.core :refer :all]))
+            [sicp-mailonline.exercises.2-17 :refer :all]))
 
 (deftest last-pair-test
   (testing "empty list"
