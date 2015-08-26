@@ -19,12 +19,32 @@
 ;; diagrams that show the structures v and w after evaluating this expression.
 ;; What would be printed as the values of v and w?
 
+;; mystery reverses x
 
-(define (mystery x)
-  (define (loop x y)
-    (if (null? x)
-      y
-      (let ((temp (cdr x)))
-        (set-cdr! x y)
-        (loop temp x))))
-  (loop x '()))
+;; v before
+;;
+;;              d /
+;;             [*|*]
+;;           c |
+;;          [*|*]
+;;        b |
+;;       [*|*]
+;;     a | 
+;; v->[*|*]
+
+;; v & w after
+;;             
+;;              a /
+;;          v->[*|*]
+;;           b |
+;;          [*|*]
+;;        c |
+;;       [*|*]
+;;     d | 
+;; w->[*|*]
+
+;; v
+;; -> (a)
+;;
+;; w
+;; -> (d c b a)
