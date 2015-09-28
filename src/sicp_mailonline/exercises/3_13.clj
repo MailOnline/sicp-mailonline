@@ -1,4 +1,10 @@
 (ns sicp-mailonline.exercises.3-13)
 
-(defn changeme-3-13 [a b c]
-  (+ a b c))
+(defn last-pair [x]
+  (if (nil? (.cdr x))
+    x
+    (last-pair (.cdr x))))
+
+(defn make-cycle [x]
+  (.setcdr (last-pair x) x)
+  x)
