@@ -7,10 +7,10 @@
 
 (deftest celsius-fahrenheit
   (let [c (con/make-connector)
-        f (con/make-connector)
-        converter (cf/celsius-fahrenheit-converter c f)]
+        f (con/make-connector)]
     (con/probe "Celsius temp" c)
     (con/probe "Fahrenheit temp" f)
+    (cf/celsius-fahrenheit-converter c f)
     
     (testing "from celsius"
       (con/set-value! c 25 'user)
