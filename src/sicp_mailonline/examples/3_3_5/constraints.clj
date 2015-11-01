@@ -13,7 +13,7 @@
    (for [constraint list :when (not= constraint except)]
      (procedure constraint))))
 
-(defn- has-value? [connector]
+(defn has-value? [connector]
   (connector :has-value?))
 
 (defn get-value [connector]
@@ -25,7 +25,7 @@
 (defn forget-value! [connector retractor]
   ((connector :forget) retractor))
 
-(defn- connect [connector new-constraint]
+(defn connect [connector new-constraint]
   ((connector :connect) new-constraint))
 
 (defn adder [a1 a2 sum]
@@ -63,7 +63,7 @@
                   (and (has-value? product) (has-value? m1))
                     (set-value! m2 (/ (get-value product) (get-value m1)) me)
                   (and (has-value? product) (has-value? m2))
-                  (set-value! m1 (/ (get-value product) (get-value m2)) me)))
+                    (set-value! m1 (/ (get-value product) (get-value m2)) me)))
           (process-forget-value []
             (forget-value! product me)
             (forget-value! m1 me)
@@ -105,6 +105,7 @@
                                 (str "Unknown request -- PROBE" request)))))]
     (connect connector me)))
 
+;; the check-then-acts on the value atom are not ideal here - but we assume a single thread here
 (defn make-connector []
   (let [value (atom {:value false
                      :informant false})
@@ -116,12 +117,11 @@
                                (do
                                  (swap! value assoc :value newval :informant setter)
                                  (for-each-except setter inform-about-value @constraints))
-                             (not= value newval)
+                             (not= (:value @value) newval)
                                (throw (IllegalStateException.
                                        (str "Contradiction" (list value newval))))
                              :else 'ignored))
         forget-my-value (fn [retractor]
-                          ;; check-then-act is not ideal here - but we only have one thread so safe
                           (if (= retractor (:informant @value))
                             (do
                               (swap! value assoc :informant false)
