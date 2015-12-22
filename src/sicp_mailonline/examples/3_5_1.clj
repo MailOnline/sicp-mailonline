@@ -45,9 +45,11 @@
       (proc (stream-car s))
       (recur proc (stream-cdr s)))))
 
+(defn display-line [x]
+  (printf "%n%s" x))
+
 (defn display-stream [s]
-  (letfn [(display-line [x] (printf "%nx" x))]
-    (stream-for-each display-line s)))
+  (stream-for-each display-line s))
 
 (defn stream-enumerate-interval [low high]
   (if (> low high)
