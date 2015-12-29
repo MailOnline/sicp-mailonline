@@ -12,6 +12,13 @@
 
 (def ^:const the-empty-stream '())
 
+;; non-memoized delay to assist with testing exercise 3.52
+;; (defmacro delay [exp]
+;;   `(fn [] ~exp))
+
+;; (defn force [delayed-object]
+;;   (delayed-object))
+
 ;; as per footnote 56, cons-stream must be a "special form" to avoid evaluation of b
 ;; we can use a macro to achieve this avoidance of evaluation
 (defmacro cons-stream [a b]
