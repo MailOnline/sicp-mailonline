@@ -8,15 +8,11 @@
 
 (ns sicp-mailonline.exercises.3-54
   (:require [sicp-mailonline.examples.3-5-1 :refer [cons-stream]]
+            [sicp-mailonline.examples.3-5-2 :refer [integers]]
             [sicp-mailonline.exercises.3-50 :refer [stream-map]]))
 
 (defn mul-streams [s1 s2]
   (stream-map * s1 s2))
 
-(defn integers-starting-from [n]
-  (cons-stream n
-               (integers-starting-from (inc n))))
-
-(def integers (integers-starting-from 1))
 (def factorials (cons-stream 1
                              (mul-streams integers factorials)))
