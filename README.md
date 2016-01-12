@@ -1,5 +1,7 @@
 # sicp-mailonline
 
+[![Join the chat at https://gitter.im/MailOnline/sicp-mailonline](https://badges.gitter.im/MailOnline/sicp-mailonline.svg)](https://gitter.im/MailOnline/sicp-mailonline?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Please feel free to use this skeleton project to start working on the book. Sometimes writing down the code is not necessary to solve a specific exercise, sometime is good to have a REPL handy. There is also room for tests if you prefer approaching a problem test first and test corner cases.
 
 ## Usage
